@@ -9,7 +9,7 @@
 namespace admin\controllers;
 
 
-class BillController extends BaseController
+class InvoiceController extends BaseController
 {
     public function actionIndex()
     {
