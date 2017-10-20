@@ -1,0 +1,12 @@
+AddDefaultCharset UTF-8
+
+#Options -Indexes
+
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} ^/(admin)
+RewriteRule ^admin(\/?.*)$ admin/web/$1 [L]
+
+RewriteCond %{REQUEST_URI} ^/(bot)
+RewriteRule ^bot(\/?.*)$ bot/web/$1 [L]
