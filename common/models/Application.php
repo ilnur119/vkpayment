@@ -16,7 +16,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property ApplicationCustomer[] $applicationCustomers
  * @property Customer[] $customers
- * @property Bank[] $banks
+ * @property Bank $bank
  * @property Order[] $orders
  * @property Product[] $products
  * @property User[] $users
@@ -60,9 +60,9 @@ class Application extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBanks()
+    public function getBank()
     {
-        return $this->hasMany(Bank::className(), ['application_id' => 'id']);
+        return $this->hasOne(Bank::className(), ['application_id' => 'id']);
     }
 
     /**
