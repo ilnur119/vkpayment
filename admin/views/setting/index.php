@@ -33,8 +33,6 @@ $this->title = "Настройки"
         VK.addCallback('onSettingsChanged', function f(e) {
             console.log(e);
 
-
-
             window.location.reload('https://vk.com/app' + '<?= Yii::$app->params['vk.appId'] ?>' + '_-'+"<?= Yii::$app->user->identity->application->vk_group_id?>");
         });
     }
@@ -44,6 +42,18 @@ $this->title = "Настройки"
 
     VK.api("market.get", {"owner_id": -<?= Yii::$app->user->identity->application->vk_group_id ?>}, function (data) {
         console.log(data);
+        for (var i = 1; i < length(data); i++) {
+            $.get('/admin/product/import-product', {
+                'productId': data[i].id,
+                'title': data[i].title,
+                'description': data[i].description,
+                'currency': data[i].price.currency.name,
+                'price': data[i].price.amount,
+                'thumbPhoto': data[i].thumb_photo
+            }, function (data) {
+                console.log(data);
+            });
+        }
     });
 
 </script>
