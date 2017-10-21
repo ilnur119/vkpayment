@@ -28,7 +28,7 @@ class VkAPI extends Component
         $album_id = 0;
         $count = 200;
         $response = $this->client
-            ->get('market.get',['v'=>$this->version, 'access_token' => $this->accessToken, 'owner_id' => "-$this->group_id", 'album_id' => $album_id, 'count' => $count])
+            ->get('market.get',['v'=>$this->version, 'access_token' => $this->accessToken, 'owner_id' => "-{$this->group_id}", 'album_id' => $album_id, 'count' => $count])
             ->send();
 
         if ($response->getIsOk()) {
