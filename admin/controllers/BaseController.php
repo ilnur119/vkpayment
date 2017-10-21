@@ -6,6 +6,7 @@ namespace admin\controllers;
 use admin\components\TinkoffAPI;
 use admin\components\VkAPI;
 use common\models\Application;
+use common\models\Product;
 use common\models\User;
 use Yii;
 use yii\filters\AccessControl;
@@ -85,10 +86,16 @@ class BaseController extends Controller
         // var_dump($api->addProductToInvoice("82ef9efc-e63d-4cef-8d6c-ff4e9d6ec48b", "Банан", "16373746", "29", 2));
         // var_dump($api->addContactsToInvoice("82ef9efc-e63d-4cef-8d6c-ff4e9d6ec48b", "test2@mail.ru", "+79999933876"));
         // var_dump($api->sendInvoice("82ef9efc-e63d-4cef-8d6c-ff4e9d6ec48b"));
-        $vk_auth_token = '9ff371d680c435f407a563bf9b4efeadfbf467f250e51045f467368ba5602bd493a6a397f4c481fb7b3bc';
-        $vk_api = new VkAPI($vk_auth_token, 155258217);
-        var_dump($vk_api->getProducts());
+        //$vk_auth_token = '9ff371d680c435f407a563bf9b4efeadfbf467f250e51045f467368ba5602bd493a6a397f4c481fb7b3bc';
+        //$vk_api = new VkAPI($vk_auth_token, 155258217);
+        //var_dump($vk_api->getProducts());
         // var_dump($vk_api->getLastDialogs(50));
+
+        $app = Application::findByGroupId(155258217);
+        var_dump($app->access_token);
+        $api = new VkAPI($app->access_token, $app->vk_group_id);
+        $response = $api->getProducts();
+        var_dump($response);
     }
 
 }
