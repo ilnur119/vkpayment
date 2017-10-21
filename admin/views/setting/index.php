@@ -27,5 +27,5 @@ $this->title = "Настройки"
 </div>
 
 <script>
-    VK.callMethod("showGroupSettingsBox", 0);
+    VK.callMethod("showGroupSettingsBox", 134217728);
 </script>
