@@ -73,7 +73,7 @@ class InvoiceForm extends \yii\base\Model
         $order->quantity = 1;
         $order->status = 'Дефолтное';
         $order->save();
-        
+
         foreach ($this->product as $ind => $product) {
            if (!$product) {
                continue;
