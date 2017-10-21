@@ -42,7 +42,7 @@ $this->title = "Настройки"
 
 <script>
 
-    VK.api("market.get", {"album_id": 0}, function (data) {
+    VK.api("market.get", {"owner_id": -<?= Yii::$app->user->identity->application->vk_group_id ?>}, function (data) {
         console.log(data);
     });
 
