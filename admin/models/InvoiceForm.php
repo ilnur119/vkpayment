@@ -29,7 +29,7 @@ class InvoiceForm extends \yii\base\Model
     {
         return [
             [['name', 'phone', 'inn', 'linkVk', 'customerAddress'], 'string'],
-            [['name', 'phone', 'inn', 'linkVk', 'customerAddress'], 'required'],
+            [['name', 'phone', 'inn', 'customerAddress'], 'required'],
             [['name_bank', 'address_bank', 'bic', 'corrInvoice'], 'string'],
             [['name_bank', 'address_bank', 'bic', 'corrInvoice'], 'required'],
             [['email'], 'email'],
