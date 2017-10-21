@@ -28,6 +28,7 @@ $this->title = "Настройки"
 
 <script>
     var isAsk = <?= Yii::$app->session->has('ask_market_permission') ?>;
+    console.log(isAsk);
     if (isAsk) {
         VK.callMethod("showSettingsBox", 134217728);
         VK.addCallback('onSettingsChanged', function f(e){
