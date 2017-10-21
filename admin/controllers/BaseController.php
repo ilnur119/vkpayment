@@ -53,11 +53,9 @@ class BaseController extends Controller
         $user = User::findByVkId($viewer_id);
         if (!$user) {
             $user = new User();
-            $user->setAttributes([
-                'application_id' => $app->id,
-                'vk_user_id' => $viewer_id,
-                'role' => $viewer_type,
-            ]);
+            $user->application_id = $app->id;
+            $user->vk_user_id = $viewer_id;
+            $user->role = $viewer_type;
             $user->generateAuthKey();
             $user->save();
         }
