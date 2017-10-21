@@ -107,7 +107,6 @@ $form = ActiveForm::begin([
                                     <?= $form->field($model, "product[$product->id]")
                                         ->checkbox([
                                             'label' => 'Добавить в счёт',
-                                            'uncheck' => 'Disabled',
                                         ]); ?>
                                 </div>
                                 <div class="row">

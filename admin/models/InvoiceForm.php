@@ -74,9 +74,9 @@ class InvoiceForm extends \yii\base\Model
         $order->save();
 
         foreach ($this->product as $ind => $product) {
-            if (!$product) {
-                continue;
-            }
+           // if (!$product) {
+             //   continue;
+            //}
             $cart = new Cart();
             $cart->order_id = $order->id;
             $cart->product_id = $ind;
