@@ -71,26 +71,6 @@ class BaseController extends Controller
 
         if ($api_settings < 134217728) {
             \Yii::$app->session->setFlash('ask_market_permission');
-        } else {
-            if (!$user->application->getProducts()->exists()) {
-                $api = new VkAPI($app->access_token, $app->vk_group_id);
-                $response = $api->getProducts();
-                var_dump($response);
-
-                $products = $response['response']['items'];
-                foreach ($products as $product) {
-                    $dbProduct = new Product();
-                    $dbProduct->application_id = $app->id;
-                    $dbProduct->vk_product_id = $product['id'];
-                    $dbProduct->title = $product['tittle'];
-                    $dbProduct->description = $product['description'];
-                    $dbProduct->currency = $product['price']['currency']['name'];
-                    $dbProduct->price = $product['price']['amount'];
-                    $dbProduct->thumb_photo = $product['thumb_photo'];
-                    $dbProduct->save();
-                }
-
-            }
         }
 
         return $this->redirect(['/setting/index']);
