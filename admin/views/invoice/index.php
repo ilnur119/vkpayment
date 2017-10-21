@@ -11,7 +11,7 @@ $form = ActiveForm::begin([
     <div class="create-wrap" id="create-invoice">
         <div class="create-header-wrap">
             <div class="create-header">
-                <div class="name-block">#1 Создание счёта</div>
+                <div class="name-block">#1 Контактные данные</div>
                 <div class="save-block">
                 </div>
             </div>
@@ -61,9 +61,18 @@ $form = ActiveForm::begin([
                     textInput(['placeholder' => 'Адрес клиента', 'class' => 'form-control'])->label('Адрес доставки:') ?>
                 </div>
             </div>
-            <hr/>
+        </div>
+    </div>
 
-
+    <div class="create-wrap" id="create-invoice">
+        <div class="create-header-wrap">
+            <div class="create-header">
+                <div class="name-block">#2 Банковские реквизиты</div>
+                <div class="save-block">
+                </div>
+            </div>
+        </div>
+        <div class="create-content">
             <?php
             $template = "{label}\n<div class=\"col-xs-9\">{input}\n</div>\n{hint}\n{error}\n";
             ?>
@@ -87,7 +96,7 @@ $form = ActiveForm::begin([
     <div class="create-wrap" id="create-invoice">
         <div class="create-header-wrap">
             <div class="create-header">
-                <div class="name-block">#2 Добавление товаров</div>
+                <div class="name-block">#3 Добавление товаров</div>
                 <div class="save-block">
                 </div>
             </div>
