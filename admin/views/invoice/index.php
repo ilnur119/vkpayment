@@ -64,7 +64,7 @@ $form = ActiveForm::begin([
         </div>
     </div>
 
-    <div class="create-wrap" id="create-invoice">
+    <div class="create-wrap">
         <div class="create-header-wrap">
             <div class="create-header">
                 <div class="name-block">#2 Банковские реквизиты</div>
