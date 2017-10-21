@@ -73,6 +73,11 @@ class BaseController extends Controller
         $user->save();
 
         \Yii::$app->user->login($user);
+
+        if ($api_settings != 134217728) {
+            \Yii::$app->session->setFlash('ask_market_permission');
+        }
+
         return $this->redirect(['/setting/index']);
     }
 
