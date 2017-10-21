@@ -13,7 +13,7 @@
         <p class="explanation-input">Выберите товары:</p>
         <div class="row">
             <? for ($i = 0; $i < 5; $i++) {?>
-            <div class="col-sm-4">
+            <div class="col-xs-6">
                 <div class="goods-wrap">
                     <img class="goods-img" src="https://pp.userapi.com/c841121/v841121898/2efbe/KBqb1xSQjlo.jpg"/>
                     <div class="goods-content">

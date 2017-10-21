@@ -5,8 +5,6 @@ namespace admin\controllers;
 
 
 use admin\models\SettingForm;
-use common\models\Bank;
-use yii\web\Controller;
 
 class SettingController extends BaseController
 {
