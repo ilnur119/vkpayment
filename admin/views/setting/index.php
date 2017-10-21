@@ -29,7 +29,7 @@ $this->title = "Настройки"
 <script>
     //VK.callMethod("showGroupSettingsBox", 262144);
     VK.callMethod("showSettingsBox", 134217728);
-    $(document).on( "onSettingsChanged", function (e) {
+    VK.addCallback('showSettingsBox', function f(e){
         console.log(e);
         location.reload();
     });
