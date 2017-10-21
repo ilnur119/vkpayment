@@ -52,6 +52,8 @@ $this->title = "Настройки"
                 'thumbPhoto': data[i].thumb_photo
             }, function (data) {
                 console.log(data);
+            }).fail(function(data) {
+                 console.log(data);
             });
         }
     });
