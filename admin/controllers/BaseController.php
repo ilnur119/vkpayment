@@ -4,6 +4,7 @@ namespace admin\controllers;
 
 
 use admin\components\TinkoffAPI;
+use admin\components\VkAPI;
 use common\models\Application;
 use common\models\User;
 use yii\filters\AccessControl;
@@ -70,14 +71,17 @@ class BaseController extends Controller
 
     public function actionTest()
     {
-        $authToken = 'MY8f8-Jkt2eVM1A3bCus2WKvLdDjc2nwvMhnTlfWRbFZa36DMh8B4_ybJ_D3Plqc5WcWukVMDj7lbOdSou9uMQ';
-        $api = new TinkoffAPI($authToken, 1239537766);
+        // $authToken = 'MY8f8-Jkt2eVM1A3bCus2WKvLdDjc2nwvMhnTlfWRbFZa36DMh8B4_ybJ_D3Plqc5WcWukVMDj7lbOdSou9uMQ';
+        // $api = new TinkoffAPI($authToken, 1239537766);
         // var_dump($api->getInvoices());
         //$account, $buyer_name, $inn, $bank_name, $bank_location, $bic, $corr_account, $number, $priority, $payment_day
         // var_dump($api->createInvoice("40101810900000000974", "Hahaja", "770000000082", "Tinkoff bank", "Moscow street 1", "044525974", "30101810145250000974", 222, 1, "2017-11-19T23:59:59+03:00"));
         // var_dump($api->addProductToInvoice("82ef9efc-e63d-4cef-8d6c-ff4e9d6ec48b", "Банан", "16373746", "29", 2));
         // var_dump($api->addContactsToInvoice("82ef9efc-e63d-4cef-8d6c-ff4e9d6ec48b", "test2@mail.ru", "+79999933876"));
         // var_dump($api->sendInvoice("82ef9efc-e63d-4cef-8d6c-ff4e9d6ec48b"));
+        $vk_auth_token = '9ff371d680c435f407a563bf9b4efeadfbf467f250e51045f467368ba5602bd493a6a397f4c481fb7b3bc';
+        $vk_api = new VkAPI($vk_auth_token, 155258217);
+        var_dump($vk_api->importProducts());
     }
 
 }
