@@ -33,9 +33,9 @@ class TinkoffAPI extends Component
             return $response->data;
         }
         return null;
-     }
+    }
 
-     public function createInvoice($account, $buyer_name, $inn, $bank_name, $bank_location, $bic, $corr_account, $number, $priority, $payment_day) {
+    public function createInvoice($account, $buyer_name, $inn, $bank_name, $bank_location, $bic, $corr_account, $number, $priority, $payment_day) {
         $data = [
             'seller' => ['account' => $account, 'bank' => []],
             'buyer' => [
@@ -65,14 +65,31 @@ class TinkoffAPI extends Component
         } else {
             return $response;
         }
-     }
+    }
 
-     public function addContactsToInvoice() {
+    public function addContactsToInvoice() {
 
-     }
+    }
 
-    public function addProductToInvoice() {
+    public function addProductToInvoice($invoice_id, $name, $prdouct_id, $price) {
+        $data = [
+            'name' => $name,
+            'price' => $price,
+            'unit' => 'шт',
+            'sku' => $prdouct_id
+        ];
 
+        $response = $this->client
+            ->put("invoice/outgoing"."/$invoice_id"."/item"."/$prdouct_id", $data)
+            ->setFormat(Client::FORMAT_JSON)
+            ->addHeaders(['Authorization' => "Bearer {$this->accessToken}"])
+            ->send();
+
+        if ($response->getIsOk()) {
+            return $response->data;
+        } else {
+            return $response;
+        }
     }
 
     public function sendInvoice() {
