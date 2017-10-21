@@ -95,18 +95,20 @@ $form = ActiveForm::begin([
         <div class="create-content scroll-item">
             <p class="explanation-input">Выберите товары:</p>
             <div class="row">
-                <?php foreach($products as $product): ?>
+                <?php foreach ($products as $product): ?>
                     <div class="col-xs-6">
                         <div class="goods-wrap">
                             <img class="goods-img"
                                  src="<?= $product->thumb_photo ?>"/>
                             <div class="goods-content">
                                 <p class="goods-name"><?= $product->title ?></p>
-                                <p class="goods-price"><?= "{$product->price} {$product->currency}"?></p>
+                                <p class="goods-price"><?= "{$product->price} {$product->currency}" ?></p>
                                 <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Добавить в счет
-                                    </label>
+                                    <?= $form->field($model, "product[$product->id]")
+                                        ->checkbox([
+                                            'label' => 'Добавить в счёт',
+                                            'uncheck' => 'Disabled',
+                                        ]); ?>
                                 </div>
                                 <div class="row">
                                     <label for="inputEmail3" class="col-xs-6 control-label text-right">Кол-во:</label>
