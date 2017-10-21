@@ -82,12 +82,14 @@ class TinkoffAPI extends Component
         }
     }
 
-    public function addProductToInvoice($invoice_id, $name, $prdouct_id, $price) {
+    public function addProductToInvoice($invoice_id, $name, $prdouct_id, $price, $count) {
         $data = [
             'name' => $name,
             'price' => $price,
             'unit' => 'шт',
-            'sku' => $prdouct_id
+            'sku' => $prdouct_id,
+            'vat' => "0",
+            'amount' => $count
         ];
 
         $response = $this->client
@@ -103,7 +105,17 @@ class TinkoffAPI extends Component
         }
     }
 
-    public function sendInvoice() {
+    public function sendInvoice($invoice_id) {
+        $response = $this->client
+            ->post("invoice/outgoing"."/$invoice_id"."/send")
+            ->setFormat(Client::FORMAT_JSON)
+            ->addHeaders(['Authorization' => "Bearer {$this->accessToken}"])
+            ->send();
 
+        if ($response->getIsOk()) {
+            return $response->data;
+        } else {
+            return $response;
+        }
     }
 }
