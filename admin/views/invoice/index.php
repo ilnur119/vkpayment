@@ -95,7 +95,7 @@ $form = ActiveForm::begin([
         <div class="create-content scroll-item">
             <p class="explanation-input">Выберите товары:</p>
             <div class="row">
-                <? for ($i = 0; $i < 5; $i++) { ?>
+                <?php for ($i = 0; $i < 5; $i++): ?>
                     <div class="col-xs-6">
                         <div class="goods-wrap">
                             <img class="goods-img"
@@ -118,7 +118,7 @@ $form = ActiveForm::begin([
                             </div>
                         </div>
                     </div>
-                <? } ?>
+                <?php endfor; ?>
             </div>
         </div>
     </div>
