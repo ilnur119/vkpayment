@@ -55,13 +55,27 @@ class TinkoffAPI extends Component
         ];
 
         $response = $this->client
-            ->post('invoice/outgoing',['body' => json_encode($data)])
+            ->post('invoice/outgoing', $data)
+            ->setFormat(Client::FORMAT_JSON)
             ->addHeaders(['Authorization' => "Bearer {$this->accessToken}"])
             ->send();
 
         if ($response->getIsOk()) {
             return $response->data;
+        } else {
+            return $response;
         }
-        return null;
      }
+
+     public function addContactsToInvoice() {
+
+     }
+
+    public function addProductToInvoice() {
+
+    }
+
+    public function sendInvoice() {
+
+    }
 }
