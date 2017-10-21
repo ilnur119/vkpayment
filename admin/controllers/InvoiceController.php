@@ -19,6 +19,8 @@ class InvoiceController extends BaseController
                 return $this->refresh();
             }
         }
-        return $this->render('index', ['model' => $model]);
+
+        $products = \Yii::$app->user->identity->application->products;
+        return $this->render('index', ['model' => $model, 'products' => $products]);
     }
 }

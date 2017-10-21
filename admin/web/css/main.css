@@ -22,6 +22,9 @@
         text-align: right; }
   .create-wrap .create-content {
     padding: 8px 12px; }
+  .create-wrap .scroll-item {
+    overflow-y: scroll;
+    height: 400px; }
 
 .goods-wrap {
   width: 100%;

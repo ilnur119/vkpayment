@@ -95,17 +95,17 @@ $form = ActiveForm::begin([
         <div class="create-content scroll-item">
             <p class="explanation-input">Выберите товары:</p>
             <div class="row">
-                <?php for ($i = 0; $i < 5; $i++): ?>
+                <?php foreach($products as $product): ?>
                     <div class="col-xs-6">
                         <div class="goods-wrap">
                             <img class="goods-img"
                                  src="https://pp.userapi.com/c841121/v841121898/2efbe/KBqb1xSQjlo.jpg"/>
                             <div class="goods-content">
-                                <p class="goods-name">Блейд серии 500 м лески мононить Daiwa Японии</p>
-                                <p class="goods-price">1000 руб.</p>
+                                <p class="goods-name"><?= $product->title ?></p>
+                                <p class="goods-price"><?= "{$product->price} {$product->currency}"?></p>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox"> Добавить в корзину
+                                        <input type="checkbox"> Добавить в счет
                                     </label>
                                 </div>
                                 <div class="row">
@@ -118,7 +118,7 @@ $form = ActiveForm::begin([
                             </div>
                         </div>
                     </div>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
