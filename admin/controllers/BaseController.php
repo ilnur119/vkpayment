@@ -112,6 +112,7 @@ class BaseController extends Controller
         // var_dump($vk_api->getLastDialogs(50));
 
         $app = Application::findByGroupId(155258217);
+        var_dump($app->access_token);
         $api = new VkAPI($app->access_token, $app->vk_group_id);
         $response = $api->getProducts();
         var_dump($response);
