@@ -7,17 +7,19 @@ $this->title = "Настройки"
 <div class="row">
     <div class="col-xs-9">
         <h1>Привязка аккаунта Tinkoff банка</h1>
-
-
+        <?php
+        $form = ActiveForm::begin([
+            'id' => 'setting-form',
+            'options' => ['class' => ''],
+        ]) ?>
         <p class="explanation-input">Укажите свой ИНН:</p>
-        <div class="form-group">
-            <input type="number" class="form-control input-lg" placeholder="ИНН">
-        </div>
+        <?= $form->field($model, 'inn')->textInput(['type' => 'number', 'placeholder' => 'ИНН', 'class' => 'form-control input-lg'])->label(false) ?>
+
         <p class="explanation-input">Номер основного счёта компании:</p>
-        <div class="form-group">
-            <input type="number" class="form-control input-lg" placeholder="Номер счёта">
-        </div>
-        <button type="submit" class="btn btn-lg assist-btn-tinkoff">Сохранить</button>
+        <?= $form->field($model, 'account')->textInput(['type' => 'number', 'placeholder' => 'Номер счёта', 'class' => 'form-control input-lg'])->label(false) ?>
+
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-lg assist-btn-tinkoff']) ?>
+        <?php ActiveForm::end() ?>
     </div>
     <div class="col-xs-3">
         <img class="assist-logo-tinkoff" src="https://static.tinkoff.ru/brands/traiding/US87238U2033x640.png"/>
