@@ -34,7 +34,7 @@ class BaseController extends Controller
         ];
     }
 
-    public function actionAuth($access_token, $viewer_id, $viewer_type, $auth_key, $group_id = null, $api_settings, $is_app_user, $api_settings)
+    public function actionAuth($access_token, $viewer_id, $viewer_type, $auth_key, $group_id = null, $api_settings, $is_app_user)
     {
         $ourAuthKey = md5(\Yii::$app->params['vk.appId'] . '_' . $viewer_id . '_' . \Yii::$app->params['vk.secretKey']);
 
