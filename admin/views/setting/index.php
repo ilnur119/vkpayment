@@ -42,7 +42,9 @@ $this->title = "Настройки"
 
     VK.api("market.get", {"owner_id": -<?= Yii::$app->user->identity->application->vk_group_id ?>}, function (data) {
         console.log(data);
-        for (var i = 1; i <= data.length; i++) {
+        data = data.response;
+        for (var i = 1; i < data.length; i++) {
+            console.log(i);
             $.get('/admin/product/import-product', {
                 'productId': data[i].id,
                 'title': data[i].title,
