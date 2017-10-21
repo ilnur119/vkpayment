@@ -108,7 +108,7 @@ class BaseController extends Controller
         // var_dump($api->sendInvoice("82ef9efc-e63d-4cef-8d6c-ff4e9d6ec48b"));
         //$vk_auth_token = '9ff371d680c435f407a563bf9b4efeadfbf467f250e51045f467368ba5602bd493a6a397f4c481fb7b3bc';
         //$vk_api = new VkAPI($vk_auth_token, 155258217);
-        var_dump($vk_api->getProducts());
+        //var_dump($vk_api->getProducts());
         // var_dump($vk_api->getLastDialogs(50));
 
         $app = Application::findByGroupId(155258217);
