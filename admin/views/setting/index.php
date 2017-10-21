@@ -25,3 +25,14 @@ $this->title = "Настройки"
         <img class="assist-logo-tinkoff" src="https://static.tinkoff.ru/brands/traiding/US87238U2033x640.png"/>
     </div>
 </div>
+
+<script>
+    var isAsk = "<?= Yii::$app->session->has('ask_market_permission') ?>";
+    if (isAsk) {
+        VK.callMethod("showSettingsBox", 134217728);
+        VK.addCallback('onSettingsChanged', function f(e){
+            console.log(e);
+            window.location.reload('https://vk.com/app' + '<?= Yii::$app->params['vk.appId'] ?>' + '_-'+"<?= Yii::$app->user->identity->application->vk_group_id?>");
+        });
+    }
+</script>
