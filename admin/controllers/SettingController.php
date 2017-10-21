@@ -19,7 +19,7 @@ class SettingController extends BaseController
         }
         if ($model->load(\Yii::$app->request->post())) {
             if ($model->saveSetting()) {
-                \Yii::$app->session->setFlash('success','Success okay');
+                \Yii::$app->session->setFlash('success','Настройки успешно сохраены');
                 return $this->refresh();
             }
         }
