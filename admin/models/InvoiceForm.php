@@ -2,6 +2,7 @@
 
 namespace admin\models;
 
+use common\models\ApplicationCustomer;
 use common\models\Cart;
 use common\models\Customer;
 use common\models\Invoice;
@@ -44,6 +45,11 @@ class InvoiceForm extends \yii\base\Model
         $customer->phone = $this->phone;
         $customer->inn = $this->inn;
         $customer->save();
+
+        $applicationCustomer = new ApplicationCustomer();
+        $applicationCustomer->application_id = \Yii::$app->user->identity->application->id;
+        $applicationCustomer->customer_id = $customer->id;
+        $applicationCustomer->save();
 
         $order = new Order();
         $order->address = $this->customerAddress;

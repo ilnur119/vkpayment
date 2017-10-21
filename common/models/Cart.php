@@ -35,15 +35,6 @@ class Cart extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
 
     /**
      * @return \yii\db\ActiveQuery
