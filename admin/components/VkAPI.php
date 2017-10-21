@@ -48,4 +48,15 @@ class VkAPI extends Component
         return null;
     }
 
+    public function sendMessage($chat_id, $massage) {
+        $response = $this->client
+            ->post('messages.getDialogs',['v'=>$this->version, 'access_token' => $this->accessToken, 'chat_id' => $chat_id, 'message' => $message])
+            ->send();
+
+        if ($response->getIsOk()) {
+            return $response->data;
+        }
+        return null;
+    }
+
 }
