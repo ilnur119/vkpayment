@@ -74,7 +74,9 @@ class BaseController extends Controller
         } else {
             if (!$user->application->getProducts()->exists()) {
                 $api = new VkAPI($app->access_token, $app->vk_group_id);
-                $products = $api->getProducts()['response']['items'];
+                $response = $api->getProducts();
+                var_dump($response);
+                $products = $response['response']['items'];
                 foreach ($products as $product) {
                     $dbProduct = new Product();
                     $dbProduct->application_id = $app->id;
