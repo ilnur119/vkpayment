@@ -31,9 +31,9 @@ class InvoiceController extends BaseController
                     $product = $cart->product;
                     $api->addProductToInvoice($invoiceId, $product->title, $product->id, $product->price, 1);
                 }
-                var_dump($api->sendInvoice($invoiceId));
+                $api->sendInvoice($invoiceId);
                 \Yii::$app->session->setFlash('success','Счет успешно отправлен');
-                //return $this->refresh();
+                return $this->refresh();
             }
         }
 
