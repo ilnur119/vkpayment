@@ -34,12 +34,16 @@ class BaseController extends Controller
         ];
     }
 
-    public function actionAuth($group_id, $access_token, $viewer_id, $viewer_type, $auth_key, $is_app_user, $api_settings)
+    public function actionAuth($access_token, $viewer_id, $viewer_type, $auth_key, $group_id = null, $is_app_user, $api_settings)
     {
         $ourAuthKey = md5(\Yii::$app->params['vk.appId'] . '_' . $viewer_id . '_' . \Yii::$app->params['vk.secretKey']);
 
         if ($ourAuthKey != $auth_key) {
             throw new ForbiddenHttpException('Отказано в доступе');
+        }
+
+        if ($group_id === null) {
+            throw new BadRequestHttpException('Необходимо запустить приложение через сообщество');
         }
 
         $app = Application::findByGroupId($group_id);
