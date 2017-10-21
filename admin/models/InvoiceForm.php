@@ -44,18 +44,24 @@ class InvoiceForm extends \yii\base\Model
         if (!$customer) {
             $customer = new Customer();
             $customer->vk_user_id = $vkId;
+            $customer->name = $this->name;
+            $customer->email = $this->email;
+            $customer->phone = $this->phone;
+            $customer->inn = $this->inn;
+
+            $applicationCustomer = new ApplicationCustomer();
+            $applicationCustomer->application_id = \Yii::$app->user->identity->application->id;
+            $applicationCustomer->customer_id = $customer->id;
+            $applicationCustomer->save();
+        } else {
+            $customer->name = $this->name;
+            $customer->email = $this->email;
+            $customer->phone = $this->phone;
+            $customer->inn = $this->inn;
+            $customer->save();
         }
-        $customer->name = $this->name;
-        $customer->email = $this->email;
-        $customer->phone = $this->phone;
-        $customer->inn = $this->inn;
-        $customer->save();
 
-        $applicationCustomer = new ApplicationCustomer();
-        $applicationCustomer->application_id = \Yii::$app->user->identity->application->id;
-        $applicationCustomer->customer_id = $customer->id;
-        $applicationCustomer->save();
-
+        
         $order = new Order();
         $order->application_id = \Yii::$app->user->identity->application->id;
         $order->address = $this->customerAddress;
