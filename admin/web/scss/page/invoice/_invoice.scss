@@ -1,0 +1,37 @@
+.create-wrap {
+  width: 100%;
+  margin-bottom: 32px;
+  border: 1px solid #e4e6e9;
+
+  .create-header-wrap {
+    display: table;
+    width: 100%;
+    color: #42648b;
+
+    .create-header {
+      display: table-row;
+      $height: 48px;
+
+      %header-blocks {
+        display: table-cell;
+        vertical-align: middle;
+        height: $height;
+        padding: 0 8px 0 12px;
+        border-bottom: 1px solid #e4e6e9;
+      }
+
+      .name-block {
+        @extend %header-blocks;
+        color: #42648b;
+        font-weight: 500;
+      }
+      .save-block {
+        @extend %header-blocks;
+        text-align: right;
+      }
+    }
+  }
+  .create-content {
+    padding: 8px 12px;
+  }
+}

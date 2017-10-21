@@ -8,6 +8,10 @@
         <div class="form-group">
             <input type="number" class="form-control input-lg" placeholder="ИНН">
         </div>
+        <p class="explanation-input">Номер основного счёта компании:</p>
+        <div class="form-group">
+            <input type="number" class="form-control input-lg" placeholder="Номер счёта">
+        </div>
         <button type="submit" class="btn btn-lg assist-btn-tinkoff">Сохранить</button>
     </div>
     <div class="col-sm-3">

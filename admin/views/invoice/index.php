@@ -1,9 +1,5 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: ilnur
- * Date: 20.10.17
- * Time: 11:20
- */
-
-echo 'Hey!';
+    echo $this->render('_createInvoice');
+    echo $this->render('_addGoods');
+?>
+<button type="submit" class="btn btn-lg assist-btn-tinkoff">Отправить счёт</button>
