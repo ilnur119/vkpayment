@@ -54,6 +54,10 @@ html, body {
 
 .assist-navbar {
   background-color: #e8eff2; }
+  .assist-navbar .navbar-toggle {
+    background-color: rgba(0, 0, 0, 0.09); }
+    .assist-navbar .navbar-toggle .icon-bar {
+      background: rgba(0, 0, 0, 0.6); }
   .assist-navbar .assist-item::before {
     position: absolute;
     bottom: 0;

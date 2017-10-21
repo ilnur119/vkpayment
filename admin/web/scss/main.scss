@@ -9,6 +9,12 @@ html, body {
 
 .assist-navbar {
   background-color: #e8eff2;
+  .navbar-toggle {
+    background-color: rgba(0, 0, 0, 0.09);
+    .icon-bar {
+      background: rgba(0, 0, 0, 0.6);
+    }
+  }
 
   .assist-item {
     &::before {
