@@ -99,7 +99,7 @@ $form = ActiveForm::begin([
                     <div class="col-xs-6">
                         <div class="goods-wrap">
                             <img class="goods-img"
-                                 src="https://pp.userapi.com/c841121/v841121898/2efbe/KBqb1xSQjlo.jpg"/>
+                                 src="<?= $product->thumb_photo ?>"/>
                             <div class="goods-content">
                                 <p class="goods-name"><?= $product->title ?></p>
                                 <p class="goods-price"><?= "{$product->price} {$product->currency}"?></p>
