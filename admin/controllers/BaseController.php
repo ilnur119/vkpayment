@@ -4,9 +4,13 @@ namespace admin\controllers;
 
 
 use admin\components\TinkoffAPI;
+use common\models\Application;
+use common\models\User;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 
 class BaseController extends Controller
 {
@@ -28,6 +32,35 @@ class BaseController extends Controller
                 'class' => 'yii\web\ErrorAction',
             ],
         ];
+    }
+
+    public function actionAuth($group_id, $access_token, $viewer_id, $viewer_type, $auth_key, $is_app_user, $api_settings)
+    {
+        $ourAuthKey = md5(\Yii::$app->params['vk.appId'] . '_' . $viewer_id . '_' . \Yii::$app->params['vk.secretKey']);
+
+        if ($ourAuthKey != $auth_key) {
+            throw new ForbiddenHttpException('Отказано в доступе');
+        }
+
+        $app = Application::findByGroupId($group_id);
+        if (!$app) {
+            $app = new Application();
+            $app->vk_group_id = $group_id;
+            $app->access_token = $access_token;
+            $app->save();
+        }
+
+        $user = User::findByVkId($viewer_id);
+        if (!$user) {
+            $user = new User();
+            $user->application_id = $app->id;
+            $user->vk_user_id = $viewer_id;
+            $user->role = $viewer_type;
+            $user->generateAuthKey();
+            $user->save();
+        }
+        \Yii::$app->user->login($user);
+        return $this->redirect(['/setting/index']);
     }
 
     public function actionTest()

@@ -88,4 +88,9 @@ class Application extends \yii\db\ActiveRecord
     {
         return $this->hasMany(User::className(), ['application_id' => 'id']);
     }
+
+    public static function findByGroupId($groupId)
+    {
+        return static::findOne(['vk_group_id' => $groupId]);
+    }
 }
