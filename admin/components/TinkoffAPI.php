@@ -88,7 +88,7 @@ class TinkoffAPI extends Component
             'name' => $name,
             'price' => intval($price),
             'unit' => 'шт',
-            'sku' => $prdouct_id,
+            'sku' => "$prdouct_id",
             'vat' => "0",
             'amount' => $count
         ];
