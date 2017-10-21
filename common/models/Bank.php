@@ -11,6 +11,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $id
  * @property integer $application_id
  * @property string $inn
+ * @property string $account
  * @property integer $created_at
  * @property integer $updated_at
  *
