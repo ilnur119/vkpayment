@@ -54,3 +54,25 @@ $this->title = "Настройки"
         });
     }
 </script>
+
+<script>
+    VK.api("market.get", {"owner_id": -<?= Yii::$app->user->identity->application->vk_group_id ?>}, function (data) {
+        console.log(data);
+        data = data.response;
+        for (var i = 1; i < data.length; i++) {
+            $.get('/admin/product/import-product', {
+                'appId': <?= Yii::$app->user->identity->application->id ?>,
+                'productId': data[i].id,
+                'title': data[i].title,
+                'description': data[i].description,
+                'currency': data[i].price.currency.name,
+                'price': data[i].price.amount,
+                'thumbPhoto': data[i].thumb_photo
+            }, function (data) {
+                console.log(data);
+            }).fail(function(data) {
+                console.log(data);
+            });
+        }
+    });
+</script>
