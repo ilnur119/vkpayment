@@ -68,7 +68,7 @@ class BaseController extends Controller
 
         \Yii::$app->user->login($user);
 
-        if ($api_settings != 134217728) {
+        if ($api_settings < 134217728) {
             \Yii::$app->session->setFlash('ask_market_permission');
         }
 
