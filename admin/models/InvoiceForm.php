@@ -20,10 +20,11 @@ class InvoiceForm extends \yii\base\Model
     public $address_bank;
     public $bic;
     public $corrInvoice;
-
     public $customerAddress;
 
     public $product = [];
+
+    public $carts = [];
 
     public function rules()
     {
@@ -82,6 +83,7 @@ class InvoiceForm extends \yii\base\Model
             $cart->order_id = $order->id;
             $cart->product_id = $ind;
             $cart->save();
+            $this->carts[] = $cart;
         }
 
         $invoice = new Invoice();

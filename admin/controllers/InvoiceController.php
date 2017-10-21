@@ -26,8 +26,12 @@ class InvoiceController extends BaseController
                 $response = $api->createInvoice($app->bank->account, $model->name, $model->inn, $model->name_bank, $model->address_bank,
                     $model->bic, $model->corrInvoice, 222, 1, "2017-11-19T23:59:59+03:00");
                 $invoiceId = $response['result']['id'];
-                var_dump($api->addContactsToInvoice($invoiceId, $model->email, $model->phone));
-
+                $api->addContactsToInvoice($invoiceId, $model->email, $model->phone);
+                foreach ($model->carts as $cart) {
+                    $product = $cart->product;
+                    var_dump($api->addProductToInvoice($invoiceId, $product->title, $product->id, $product->price, 1));
+                }
+                
                 \Yii::$app->session->setFlash('success','Счет успешно отправлен');
                 //return $this->refresh();
             }
