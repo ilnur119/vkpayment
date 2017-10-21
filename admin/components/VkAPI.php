@@ -34,7 +34,7 @@ class VkAPI extends Component
         if ($response->getIsOk()) {
             return $response->data;
         }
-        return response;
+        return null;
     }
 
     public function getLastDialogs($count) {
@@ -45,7 +45,7 @@ class VkAPI extends Component
         if ($response->getIsOk()) {
             return $response->data;
         }
-        return response;
+        return null;
     }
 
 }
