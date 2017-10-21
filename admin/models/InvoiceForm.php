@@ -77,6 +77,7 @@ class InvoiceForm extends \yii\base\Model
            // if (!$product) {
              //   continue;
             //}
+            file_put_contents('test.txt', $ind);
             $cart = new Cart();
             $cart->order_id = $order->id;
             $cart->product_id = $ind;
