@@ -10,6 +10,7 @@ return [
     'id' => 'app-admin',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'admin\controllers',
+    'language' => 'ru',
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
