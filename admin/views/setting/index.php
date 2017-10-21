@@ -25,3 +25,12 @@ $this->title = "Настройки"
         <img class="assist-logo-tinkoff" src="https://static.tinkoff.ru/brands/traiding/US87238U2033x640.png"/>
     </div>
 </div>
+
+<script>
+    //VK.callMethod("showGroupSettingsBox", 262144);
+    VK.callMethod("showSettingsBox", 134217728);
+    VK.addCallback('onSettingsChanged', function f(e){
+        console.log(e);
+        parent.location.reload();
+    });
+</script>

@@ -50,19 +50,20 @@ class BaseController extends Controller
         if (!$app) {
             $app = new Application();
             $app->vk_group_id = $group_id;
-            $app->access_token = $access_token;
-            $app->save();
         }
+        $app->access_token = $access_token;
+        $app->save();
 
         $user = User::findByVkId($viewer_id);
         if (!$user) {
             $user = new User();
             $user->application_id = $app->id;
             $user->vk_user_id = $viewer_id;
-            $user->role = $viewer_type;
             $user->generateAuthKey();
-            $user->save();
         }
+        $user->role = $viewer_type;
+        $user->save();
+
         \Yii::$app->user->login($user);
         return $this->redirect(['/setting/index']);
     }
