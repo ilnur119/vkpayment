@@ -76,6 +76,7 @@ class BaseController extends Controller
                 $api = new VkAPI($app->access_token, $app->vk_group_id);
                 $response = $api->getProducts();
                 var_dump($response);
+                /*
                 $products = $response['response']['items'];
                 foreach ($products as $product) {
                     $dbProduct = new Product();
@@ -88,6 +89,7 @@ class BaseController extends Controller
                     $dbProduct->thumb_photo = $product['thumb_photo'];
                     $dbProduct->save();
                 }
+                */
 
             }
         }
