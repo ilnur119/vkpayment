@@ -86,7 +86,7 @@ class TinkoffAPI extends Component
     public function addProductToInvoice($invoice_id, $name, $prdouct_id, $price, $count) {
         $data = [
             'name' => $name,
-            'price' => $price,
+            'price' => intval($price),
             'unit' => 'шт',
             'sku' => $prdouct_id,
             'vat' => "0",
