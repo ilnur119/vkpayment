@@ -111,10 +111,10 @@ $form = ActiveForm::begin([
                                         ]); ?>
                                 </div>
                                 <div class="row">
-                                    <label for="inputEmail3" class="col-xs-6 control-label text-right">Кол-во:</label>
-                                    <div class="col-xs-6" style="padding-left: 0px">
+                                    <label for="inputEmail3" class="col-xs-4 control-label" style="padding-right: 0px;">Кол-во:</label>
+                                    <div class="col-xs-6" style="padding-left: 0px;">
                                         <input type="number" class="form-control input-sm" id="inputEmail3" value="1"
-                                               placeholder="Количество">
+                                               placeholder="Количество"/>
                                     </div>
                                 </div>
                             </div>
