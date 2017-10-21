@@ -72,10 +72,13 @@ class InvoiceForm extends \yii\base\Model
         $order->status = 'Дефолтное';
         $order->save();
 
-        for ($i = 0; $i < 4; $i++) {
+        foreach ($this->product as $ind => $product) {
+            if (!$product) {
+                continue;
+            }
             $cart = new Cart();
-            $cart->order_id = $order->save();
-            $cart->product_id = $i;
+            $cart->order_id = $order->id;
+            $cart->product_id = $ind;
             $cart->save();
         }
 
