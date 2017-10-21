@@ -5,7 +5,6 @@
         <div class="create-header">
             <div class="name-block">#1 Создание счёта</div>
             <div class="save-block">
-                <button class="btn btn-vk">Сохранить</button>
             </div>
         </div>
     </div>

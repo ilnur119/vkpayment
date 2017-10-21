@@ -64,4 +64,9 @@ class Customer extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Order::className(), ['customer_id' => 'id']);
     }
+
+    public static function findByVkId($vkId)
+    {
+        return static::findOne(['vk_user_id' => $vkId]);
+    }
 }
