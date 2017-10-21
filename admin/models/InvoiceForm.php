@@ -73,14 +73,11 @@ class InvoiceForm extends \yii\base\Model
         $order->quantity = 1;
         $order->status = 'Дефолтное';
         $order->save();
-
-        file_put_contents('test.txt', json_encode($this->product));
-
+        
         foreach ($this->product as $ind => $product) {
-           // if (!$product) {
-             //   continue;
-            //}
-            file_put_contents('test.txt', $ind);
+           if (!$product) {
+               continue;
+            }
             $cart = new Cart();
             $cart->order_id = $order->id;
             $cart->product_id = $ind;
