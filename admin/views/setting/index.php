@@ -27,10 +27,12 @@ $this->title = "Настройки"
 </div>
 
 <script>
-    //VK.callMethod("showGroupSettingsBox", 262144);
-    VK.callMethod("showSettingsBox", 134217728);
-    VK.addCallback('onSettingsChanged', function f(e){
-        console.log(e);
-        parent.location.reload();
-    });
+    var isAsk = "<?= Yii::$app->session->has('ask_market_permission') ?>";
+    if (isAsk) {
+        VK.callMethod("showSettingsBox", 134217728);
+        VK.addCallback('onSettingsChanged', function f(e){
+            console.log(e);
+            window.location.reload('https://vk.com/app' + '<?= Yii::$app->params['vk.appId'] ?>' + '_-'+"<?= Yii::$app->user->identity->application->vk_group_id?>");
+        });
+    }
 </script>
