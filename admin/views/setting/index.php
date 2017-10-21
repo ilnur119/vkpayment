@@ -46,6 +46,7 @@ $this->title = "Настройки"
         for (var i = 1; i < data.length; i++) {
             console.log(i);
             $.get('/admin/product/import-product', {
+                'appId': <?= Yii::$app->user->identity->application->id ?>,
                 'productId': data[i].id,
                 'title': data[i].title,
                 'description': data[i].description,

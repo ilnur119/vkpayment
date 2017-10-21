@@ -9,9 +9,10 @@ use yii\web\Controller;
 
 class ProductController extends Controller
 {
-    public function actionImportProduct($productId, $title, $description, $currency, $price, $thumbPhoto)
+    public function actionImportProduct($productId, $title, $description, $currency, $price, $thumbPhoto, $appId)
     {
         $product = new Product();
+        $product->application_id = $appId;
         $product->vk_product_id = $productId;
         $product->title = $title;
         $product->description = $description;
