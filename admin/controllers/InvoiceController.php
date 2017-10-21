@@ -25,8 +25,8 @@ class InvoiceController extends BaseController
 
                 $response = $api->createInvoice($app->bank->account, $model->name, $model->inn, $model->name_bank, $model->address_bank,
                     $model->bic, $model->corrInvoice, 222, 1, "2017-11-19T23:59:59+03:00");
-
-                var_dump($response);
+                $invoiceId = $response['result']['id'];
+                var_dump($api->addContactsToInvoice($invoiceId, $model->email, $model->phone));
 
                 \Yii::$app->session->setFlash('success','Счет успешно отправлен');
                 //return $this->refresh();
