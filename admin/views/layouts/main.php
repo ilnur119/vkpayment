@@ -7,9 +7,11 @@ use admin\assets\AppAsset;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\web\View;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
+$this->registerAssetBundle(yii\web\JqueryAsset::className(), View::POS_HEAD);
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
