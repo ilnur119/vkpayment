@@ -24,7 +24,7 @@ class InvoiceController extends BaseController
                 $api = new TinkoffAPI(\Yii::$app->params['tinkoff.accessToken'], $app->bank->inn);
 
                 $response = $api->createInvoice($app->bank->account, $model->name, $model->inn, $model->name_bank, $model->address_bank,
-                    $model->bic, $model->corrInvoice, 222, 1, date('Y-m-d H:i:sP', time() + 2592000));
+                    $model->bic, $model->corrInvoice, 222, 1, "2017-11-19T23:59:59+03:00");
 
                 var_dump($response);
 
