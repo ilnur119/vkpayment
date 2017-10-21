@@ -33,7 +33,7 @@ $this->title = "Настройки"
         VK.callMethod("showSettingsBox", 134217728);
         VK.addCallback('onSettingsChanged', function f(e){
             console.log(e);
-            document.location.href = 'https://vk.com/app' + '<?= Yii::$app->params['vk.appId'] ?>' + '_-'+"<?= Yii::$app->user->identity->application->vk_group_id?>";
+            window.location.reload('https://vk.com/app' + '<?= Yii::$app->params['vk.appId'] ?>' + '_-'+"<?= Yii::$app->user->identity->application->vk_group_id?>";);
         });
     }
 </script>
