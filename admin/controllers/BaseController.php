@@ -45,10 +45,8 @@ class BaseController extends Controller
         $app = Application::findByGroupId($group_id);
         if (!$app) {
             $app = new Application();
-            $app->setAttributes([
-                'vk_group_id' => $group_id,
-                'access_token' => $access_token,
-            ]);
+            $app->vk_group_id = $group_id;
+            $app->access_token = $access_token;
             $app->save();
         }
 
