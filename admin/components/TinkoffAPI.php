@@ -32,6 +32,7 @@ class TinkoffAPI extends Component
         if ($response->getIsOk()) {
             return $response->data;
         }
+
         return null;
     }
 
