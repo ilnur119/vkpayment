@@ -50,6 +50,7 @@ class InvoiceForm extends \yii\base\Model
             $customer->email = $this->email;
             $customer->phone = $this->phone;
             $customer->inn = $this->inn;
+            $customer->save();
 
             $applicationCustomer = new ApplicationCustomer();
             $applicationCustomer->application_id = \Yii::$app->user->identity->application->id;
