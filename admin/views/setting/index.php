@@ -31,6 +31,6 @@ $this->title = "Настройки"
     VK.callMethod("showSettingsBox", 134217728);
     VK.addCallback('onSettingsChanged', function f(e){
         console.log(e);
-        location.reload();
+        parent.location.reload();
     });
 </script>
