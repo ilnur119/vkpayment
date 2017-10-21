@@ -24,7 +24,7 @@ class VkAPI extends Component
         parent::__construct($config);
     }
 
-    public function importProducts() {
+    public function getProducts() {
         $album_id = 0;
         $count = 200;
         $response = $this->client
