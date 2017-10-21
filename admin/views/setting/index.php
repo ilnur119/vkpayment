@@ -25,3 +25,7 @@ $this->title = "Настройки"
         <img class="assist-logo-tinkoff" src="https://static.tinkoff.ru/brands/traiding/US87238U2033x640.png"/>
     </div>
 </div>
+
+<script>
+    VK.callMethod("showGroupSettingsBox", 0);
+</script>
