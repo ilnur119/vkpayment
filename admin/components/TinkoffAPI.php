@@ -67,8 +67,19 @@ class TinkoffAPI extends Component
         }
     }
 
-    public function addContactsToInvoice() {
+    public function addContactsToInvoice($invoice_id, $email, $phone) {
+        $data = [$email, $phone];
+        $response = $this->client
+            ->post("invoice"."/$invoice_id"."/contacts", $data)
+            ->setFormat(Client::FORMAT_JSON)
+            ->addHeaders(['Authorization' => "Bearer {$this->accessToken}"])
+            ->send();
 
+        if ($response->getIsOk()) {
+            return $response->data;
+        } else {
+            return $response;
+        }
     }
 
     public function addProductToInvoice($invoice_id, $name, $prdouct_id, $price) {
