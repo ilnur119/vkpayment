@@ -29,7 +29,7 @@ class m171020_173003_create_order_table extends Migration
         $this->addForeignKey('fk-order-application_id', 'order', 'application_id',
             'application', 'id', 'CASCADE', 'CASCADE');
         $this->addForeignKey('fk-order-customer_id', 'order', 'customer_id',
-            'application', 'id', 'CASCADE', 'CASCADE');
+            'customer', 'id', 'CASCADE', 'CASCADE');
     }
 
     /**

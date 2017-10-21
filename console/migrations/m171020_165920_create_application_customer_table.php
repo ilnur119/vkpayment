@@ -23,7 +23,7 @@ class m171020_165920_create_application_customer_table extends Migration
         $this->addForeignKey('fk-application_customer-application_id', 'application_customer', 'application_id',
             'application', 'id', 'CASCADE', 'CASCADE');
         $this->addForeignKey('fk-application_customer-customer_id', 'application_customer', 'customer_id',
-            'application', 'id', 'CASCADE', 'CASCADE');
+            'customer', 'id', 'CASCADE', 'CASCADE');
     }
 
     /**
