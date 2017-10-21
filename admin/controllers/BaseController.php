@@ -34,7 +34,7 @@ class BaseController extends Controller
         ];
     }
 
-    public function actionAuth($access_token, $viewer_id, $viewer_type, $auth_key, $group_id = null, $is_app_user, $api_settings)
+    public function actionAuth($access_token, $viewer_id, $viewer_type, $auth_key, $group_id = null, $api_settings, $is_app_user, $api_settings)
     {
         $ourAuthKey = md5(\Yii::$app->params['vk.appId'] . '_' . $viewer_id . '_' . \Yii::$app->params['vk.secretKey']);
 
@@ -65,6 +65,11 @@ class BaseController extends Controller
         $user->save();
 
         \Yii::$app->user->login($user);
+
+        if ($api_settings != 134217728) {
+            \Yii::$app->session->setFlash('ask_market_permission');
+        }
+
         return $this->redirect(['/setting/index']);
     }
 
