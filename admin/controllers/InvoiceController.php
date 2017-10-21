@@ -21,13 +21,13 @@ class InvoiceController extends BaseController
 
                 /* @var $app Application */
                 $app = \Yii::$app->user->identity->application;
-                $api = new TinkoffAPI(\Yii::$app->params['tinkoff.accessToken'], $app->inn);
+                $api = new TinkoffAPI(\Yii::$app->params['tinkoff.accessToken'], $app->bank->inn);
 
                 $response = $api->createInvoice($app->bank->account, $model->name, $model->inn, $model->name_bank, $model->address_bank,
                     $model->bic, $model->corrInvoice, 222, 1, date_format(time() + 2592000, 'Y-m-d H:i:sP'));
 
                 var_dump($response);
-                
+
                 \Yii::$app->session->setFlash('success','Счет успешно отправлен');
                 //return $this->refresh();
             }
