@@ -23,7 +23,7 @@ class ApplicationCustomer extends \yii\db\ActiveRecord
     {
         return 'application_customer';
     }
-    
+
     /**
      * @inheritdoc
      */

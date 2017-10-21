@@ -36,7 +36,10 @@ class InvoiceForm extends \yii\base\Model
 
     public function saveForm()
     {
-        $vkId = $this->prepareVkLink($this->linkVk);
+        $vkId = null;
+        if ($this->linkVk) {
+            $vkId = $this->prepareVkLink($this->linkVk);
+        }
         $customer = Customer::findByVkId($vkId);
         if (!$customer) {
             $customer = new Customer();
