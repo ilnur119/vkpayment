@@ -92,7 +92,7 @@ $form = ActiveForm::begin([
                 </div>
             </div>
         </div>
-        <div class="create-content">
+        <div class="create-content scroll-item">
             <p class="explanation-input">Выберите товары:</p>
             <div class="row">
                 <? for ($i = 0; $i < 5; $i++) { ?>
