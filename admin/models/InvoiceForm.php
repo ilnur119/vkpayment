@@ -29,7 +29,9 @@ class InvoiceForm extends \yii\base\Model
     {
         return [
             [['name', 'phone', 'inn', 'linkVk', 'customerAddress'], 'string'],
+            [['name', 'phone', 'inn', 'linkVk', 'customerAddress'], 'required'],
             [['name_bank', 'address_bank', 'bic', 'corrInvoice'], 'string'],
+            [['name_bank', 'address_bank', 'bic', 'corrInvoice'], 'required'],
             [['email'], 'email'],
         ];
     }
@@ -61,7 +63,7 @@ class InvoiceForm extends \yii\base\Model
             $customer->save();
         }
 
-        
+
         $order = new Order();
         $order->application_id = \Yii::$app->user->identity->application->id;
         $order->address = $this->customerAddress;
