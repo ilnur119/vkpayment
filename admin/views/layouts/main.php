@@ -36,10 +36,17 @@ AppAsset::register($this);
             'class' => 'assist-navbar navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Выставление счёта', 'url' => ['/invoice'], 'options'=>['class'=>'assist-item']],
-        ['label' => 'Настройки', 'url' => ['/setting'], 'options'=>['class'=>'assist-item']],
-    ];
+    $menuItems = [];
+    if (Yii::$app->user->identity->role > 4) {
+        $menuItems = [
+            ['label' => 'Выставление счёта', 'url' => ['/invoice'], 'options' => ['class' => 'assist-item']],
+            ['label' => 'Настройки', 'url' => ['/setting'], 'options' => ['class' => 'assist-item']],
+        ];
+    } else {
+        $menuItems = [
+            ['label' => 'Выставление счёта', 'url' => ['/invoice'], 'options' => ['class' => 'assist-item']],
+        ];
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => $menuItems,

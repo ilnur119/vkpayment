@@ -29,7 +29,7 @@ $this->title = "Настройки"
 <script>
     var isAsk = "<?= Yii::$app->session->has('ask_market_permission') ?>";
     if (isAsk) {
-        VK.callMethod("showSettingsBox", 134217728 + 4096);
+        VK.callMethod("showSettingsBox", 134217728 | 4096);
         VK.addCallback('onSettingsChanged', function f(e) {
             console.log(e);
             VK.api("market.get", {"owner_id": -<?= Yii::$app->user->identity->application->vk_group_id ?>}, function (data) {
