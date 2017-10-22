@@ -3,7 +3,7 @@
     VK.addCallback('onAllowMessagesFromCommunity', function f(e) {
         console.log(e);
         VK.api("messages.send", {
-            "user_id": -<?= Yii::$app->user->identity->application->vk_group_id ?>,
+            "user_id": <?= Yii::$app->user->identity->vk_user_id ?>,
             'message': 'Привет! Что тебя интересует?'
         }, function (data) {
             data = data.response;
