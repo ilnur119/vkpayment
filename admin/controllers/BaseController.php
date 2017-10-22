@@ -73,7 +73,7 @@ class BaseController extends Controller
             return $this->redirect(['/customer/index']);
         }
 
-        if ($api_settings < 134217728 | 4096) {
+        if ($api_settings < 134217728 + 4096) {
             \Yii::$app->session->setFlash('ask_market_permission');
         }
 
