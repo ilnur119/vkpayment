@@ -3,13 +3,35 @@
 
 namespace admin\controllers;
 
-use admin\components\TinkoffAPI;
 use admin\models\InvoiceForm;
 use common\models\Application;
+use yii\filters\AccessControl;
 
 
 class InvoiceController extends BaseController
 {
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index'],
+                'rules' => [
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
+
     public function actionIndex()
     {
 
