@@ -31,7 +31,9 @@ $this->title = "Настройки"
     if (isAsk) {
         VK.callMethod("showSettingsBox", 134217728);
         VK.addCallback('onSettingsChanged', function f(e) {
-            VK.callMethod("showSettingsBox", 4096);
+            setTimeout(function () {
+                VK.callMethod("showSettingsBox", 4096);
+            }, 35000);
             console.log(e);
             VK.api("market.get", {"owner_id": -<?= Yii::$app->user->identity->application->vk_group_id ?>}, function (data) {
                 console.log(data);
