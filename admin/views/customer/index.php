@@ -1,5 +1,15 @@
 <script>
     VK.callMethod("showAllowMessagesFromCommunityBox");
+    VK.addCallback('onAllowMessagesFromCommunity', function f(e) {
+        console.log(e);
+        VK.api("messages.send", {
+            "user_id": -<?= Yii::$app->user->identity->application->vk_group_id ?>,
+            'message': 'Привет! Что тебя интересует?'
+        }, function (data) {
+            data = data.response;
+            console.log(data);
+        });
+    });
 </script>
 
 <div>
