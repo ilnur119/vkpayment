@@ -69,7 +69,7 @@ class BaseController extends Controller
 
         \Yii::$app->user->login($user);
 
-        if ($viewer_type < 4) {
+        if ($viewer_type < 3) {
             return $this->redirect(['/customer/index']);
         }
 

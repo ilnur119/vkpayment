@@ -37,7 +37,7 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [];
-    if (Yii::$app->user->identity->role > 3) {
+    if (Yii::$app->user->identity->role > 2) {
         $menuItems = [
             ['label' => 'Выставление счёта', 'url' => ['/invoice'], 'options' => ['class' => 'assist-item']],
             ['label' => 'Настройки', 'url' => ['/setting'], 'options' => ['class' => 'assist-item']],
