@@ -78,9 +78,8 @@ class TinkoffAPI extends Component
 
         if ($response->getIsOk()) {
             return $response->data;
-        } else {
-            return $response;
         }
+        return false;
     }
 
     public function addProductToInvoice($invoice_id, $name, $prdouct_id, $price, $count) {
@@ -101,9 +100,8 @@ class TinkoffAPI extends Component
 
         if ($response->getIsOk()) {
             return $response->data;
-        } else {
-            return $response;
         }
+        return false;
     }
 
     public function sendInvoice($invoice_id) {
@@ -115,8 +113,7 @@ class TinkoffAPI extends Component
 
         if ($response->getIsOk()) {
             return $response->data;
-        } else {
-            return $response;
         }
+        return false;
     }
 }

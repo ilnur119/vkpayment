@@ -2,6 +2,7 @@
 
 namespace admin\models;
 
+use admin\components\TinkoffAPI;
 use common\models\ApplicationCustomer;
 use common\models\Cart;
 use common\models\Customer;
@@ -36,6 +37,54 @@ class InvoiceForm extends \yii\base\Model
             ['product', 'safe'],
             [['email'], 'email'],
         ];
+    }
+
+    public function sendInvoice()
+    {
+        $model =  $this;
+        $app = \Yii::$app->user->identity->application;
+        $api = new TinkoffAPI(\Yii::$app->params['tinkoff.accessToken'], $app->bank->inn);
+
+        $response = $api->createInvoice(
+            $app->bank->account,
+            $model->name,
+            $model->inn,
+            $model->name_bank,
+            $model->address_bank,
+            $model->bic,
+            $model->corrInvoice,
+            222,
+            1,
+            "2017-11-19T23:59:59+03:00"
+        );
+
+        if (!isset($response['result'])) {
+            return false;
+        }
+
+        $invoiceId = $response['result']['id'];
+
+        if (!$api->addContactsToInvoice($invoiceId, $model->email, $model->phone)) {
+            return false;
+        }
+
+        foreach ($model->carts as $cart) {
+            $product = $cart->product;
+            if (!$api->addProductToInvoice(
+                $invoiceId,
+                $product->title,
+                $product->id,
+                $product->price,
+                1
+            )) {
+                return false;
+            };
+        }
+        if (!$api->sendInvoice($invoiceId)) {
+            return false;
+        }
+
+        return true;
     }
 
     public function saveForm()
